@@ -1,0 +1,77 @@
+body {
+  overflow: hidden;
+  font-family: "rubik", verdana, sans-serif;
+}
+.bg-primary {
+  background-color: rgb(255, 255, 255) !important;
+}
+#sidebar-container {
+  width: 21rem;
+  padding: 20px;
+  height: 100%;
+}
+
+#sidebar-container .logo {
+  padding: 10px 25px;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(55, 55, 55);
+}
+a:hover {
+  text-decoration: none;
+  color: rgb(17, 170, 230);
+}
+#menuabajo {
+  padding: 10px 0px;
+}
+.menu img {
+  opacity: 80%;
+  margin-right: 12px;
+}
+.app {
+  font-size: 18px;
+  font-weight: 450;
+  color: rgb(72, 72, 72);
+}
+
+header {
+  height: 78px;
+  padding: 18px 26px 20px 25px;
+  box-shadow: rgb(231 238 255 / 50%) 0px 8px 20px 0px;
+  min-width: 480px;
+}
+header .mj-bienvenida {
+  font-size: 24px;
+  font-weight: 450;
+  color: rgb(8, 137, 188);
+  margin: -40px 0px 0px 340px;
+}
+header .avatar {
+  max-width: 45px;
+  margin: -65px 0px 0px 520px;
+}
+header .nombre-usuario {
+  font-size: 16px;
+  font-weight: 450;
+  color: rgb(72, 72, 72);
+  margin: -53px 0px 0px 585px;
+}
+header button {
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 30px;
+  border: none;
+  transition: background-color 0.5s ease 0s;
+  margin-left: 80rem;
+  background-color: transparent;
+  color: rgb(8, 137, 188);
+  font-weight: 450;
+  height: 3rem;
+}
+header button:hover {
+  background-color: #efefef;
+  color: rgb(8, 137, 188);
+}
