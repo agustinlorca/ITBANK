@@ -37,10 +37,13 @@ a:hover {
 }
 
 header {
-  height: 78px;
+  height: 90px;
   padding: 18px 26px 20px 25px;
-  box-shadow: rgb(231 238 255 / 50%) 0px 8px 20px 0px;
+  box-shadow: rgba(184, 202, 244, 0.5) 0px 8px 20px 0px;
   min-width: 480px;
+}
+.encabezado {
+  margin: -60px 0px 0px 0px;
 }
 header .mj-bienvenida {
   font-size: 24px;
@@ -53,10 +56,10 @@ header .avatar {
   margin: -65px 0px 0px 520px;
 }
 header .nombre-usuario {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 450;
   color: rgb(72, 72, 72);
-  margin: -53px 0px 0px 585px;
+  margin: -29px 510px;
 }
 header button {
   align-items: center;

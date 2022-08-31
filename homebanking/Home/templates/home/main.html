@@ -20,22 +20,21 @@
   </head>
 
   <body>
-    <header>
-      <a href="{% url 'access'%}"><button>Cerrar sesión</button></a>
-      <p class="mj-bienvenida">¡Bienvenido!</p>
-      <img src="{% static 'home/img/foto-usuario.jpg' %}" class="img-fluid rounded-circle mr-2 avatar">
-      <p class="nombre-usuario">Eugenio Morales</p>
-    </header>
-    
-
-
+    <header class="container-fluid">
+      <!-- LOGO -->
+     <div class="mt-2 ms-4">
+       <img src="{% static 'home/img/itbank-logoceleste.png' %}" alt="logo" width="180">
+     </div>
+     <div class="encabezado container-fluid">
+       <a href="{% url 'home' %}"><button>Cerrar sesión</button></a>
+       <p class="mj-bienvenida">¡Bienvenido!</p>
+       <p class="nombre-usuario">{{user}}</p>
+     </div>
+     
+   </header>
 
     <div class="d-flex">
       <div id="sidebar-container" class="bg-primary">
-        <!-- LOGO -->
-        <div class="logo">
-          <img src="{% static 'home/img/itbank-logoceleste.png' %}" alt="logo" width="130">
-        </div>
         <!-- MENU -->
         <div class="menu">
           <a href="#" class="d-block m-2 p-1"><img src="{% static 'home/icons/inicio.svg' %}"></i>Inicio</a>

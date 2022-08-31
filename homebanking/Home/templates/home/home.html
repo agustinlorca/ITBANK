@@ -24,7 +24,7 @@
     <!----- Header ----->
 
     <header style="background-color: #ffffff">
-      <a href="index.html"
+      <a
         ><img
           src="{% static 'home/img/itbank-logoceleste.png' %}"
           alt="Logo_Itbank"
@@ -38,9 +38,9 @@
           <li><a href="#">Lorem</a></li>
         </ul>
       </nav>
-      <a href="{% url 'access'%}"><button>Ingresar</button></a>
+      <a href="{% url 'login' %}"><button>Ingresar</button></a>
     </header>
-
+    {% block content %} {% endblock %}
     <!----- Grid con texto e imagen ----->
 
     <div class="container d-flex justify-content-center">
