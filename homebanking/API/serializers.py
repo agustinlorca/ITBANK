@@ -2,6 +2,12 @@ from rest_framework import serializers
 from Clientes.models import Cliente
 from Cuentas.models import Cuenta
 from Prestamos.models import Prestamo
+from django.contrib.auth.models import User
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ["id", "username"]
 
 class ClienteSerializer(serializers.HyperlinkedModelSerializer):
     

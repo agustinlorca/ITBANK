@@ -5,9 +5,9 @@ from API import views
 
 
 router = DefaultRouter()
-router.register(r'data_cliente', views.ClienteViewSet)
-router.register(r'cuentas', views.CuentaViewSet)
-router.register(r'prestamos', views.PrestamosViewSet)
+router.register(r'data_cliente', views.ClienteViewSet, basename='data_cliente')
+router.register(r'cuentas', views.CuentaViewSet, basename='cuentas')
+router.register(r'prestamos', views.PrestamosViewSet, basename='prestamos')
 
 
 urlpatterns = [
