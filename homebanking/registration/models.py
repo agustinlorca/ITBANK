@@ -8,5 +8,4 @@ class Usuario(models.Model):
     username = models.TextField()
     first_name = models.TextField()
     last_name = models.TextField()
-    dni = models.IntegerField()
     email = models.TextField()

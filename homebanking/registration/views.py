@@ -11,11 +11,12 @@ def register_request(request):
 		if form.is_valid():
 			user = form.save()
 			login(request, user)
-			messages.success(request, "Registration successful." )
 			return redirect("register_complete")
-		messages.error(request, "Unsuccessful registration. Invalid information.")
+		messages.error(request, "No se ha podido crear el registro. La información es inválida.")
+	
 	form = RegisterForm()
-	return render (request=request, template_name="registration/register.html", context={"register_form":form})
+	return render (request, "registration/register.html",  context={"register_form":form})
+
 
 def register_complete(request):
     return render(request, "registration/register_complete.html",)

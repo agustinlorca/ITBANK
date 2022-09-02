@@ -28,7 +28,7 @@
      <div class="encabezado container-fluid">
        <a href="{% url 'home' %}"><button>Cerrar sesión</button></a>
        <p class="mj-bienvenida">¡Bienvenido!</p>
-       <p class="nombre-usuario">{{user}}</p>
+       <p class="nombre-usuario">{{user.first_name}}</p>
      </div>
      
    </header>
@@ -45,6 +45,7 @@
           <a href="#" class="d-block m-2 p-1"><img src="{% static 'home/icons/pagos.svg' %}">Pagos</a>
           <a href="#" class="d-block m-2 p-1"><img src="{% static 'home/icons/seguridad.svg' %}">Seguridad</a>
           <a href="#" class="d-block m-2 p-1"><img src="{% static 'home/icons/turnos.svg' %}">Turnos</a>
+          <a type="button" class="d-block m-2 p-1" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="{% static 'home/icons/info.svg' %}">Informacion de cliente</a>
           <a href="#" class="d-block m-2 p-1"><img src="{% static 'home/icons/ayuda.svg' %}">Ayuda</a>
         </div>
         <!-- Descarga app -->
@@ -71,7 +72,23 @@
         
       </div>
     </div>
-    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Mis datos</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>A continuación vas a poder ingresar a una API privada, donde podes ver la información que ITBANK posee sobre vos.</p>
+          </div>
+          <div class="modal-footer">
+            <a href="{% url 'api-root' %}" class="btn btn-success" >Ir ahora</a>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </html>
