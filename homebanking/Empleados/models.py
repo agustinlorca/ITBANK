@@ -13,10 +13,10 @@ class Empleado(models.Model):
     class Meta:
         verbose_name = 'Empleado'
         verbose_name_plural = 'Empleados'
-        
+
 class DireccionEmpleado(models.Model):
     id_direccion = models.AutoField(primary_key=True)
-    direccion = models.TextField('Dirección', max_length=255, blank=False, null=False)
+    direccion = models.TextField()
     ciudad = models.TextField()
     provincia = models.TextField()
     pais = models.TextField()

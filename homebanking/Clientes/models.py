@@ -6,8 +6,8 @@ class Cliente(models.Model):
     customer_id = models.AutoField(primary_key=True)
     customer_name = models.TextField()
     customer_surname = models.TextField()
-    customer_DNI = models.IntegerField()
-    dob = models.DateField()
+    customer_DNI = models.IntegerField(null=True, blank=True)
+    dob = models.DateField(null=True, blank=True)
     branch_id = models.IntegerField()   
 
     class Meta:
@@ -31,4 +31,5 @@ class DireccionCliente(models.Model):
         verbose_name_plural = 'Direcciones de los Clientes'
         
     def __str__(self):
-        return self.customer_id
+        return self.direccion
+        
