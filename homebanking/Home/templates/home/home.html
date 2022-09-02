@@ -32,15 +32,24 @@
       {% if user.is_authenticated %}
       <nav>
         <ul class="nav-links">
-          <li class="p-2 bg-info bg-opacity-10 border border-info rounded">
-            ¡Hola! {{user.first_name}} {{user.last_name}}
-          </li>
           <li><a href="#dolar">Cotización del dolar</a></li>
           <li><a href="#info">Informacion</a></li>
           <li><a href="#footer">Sobre nosotros</a></li>
         </ul>
       </nav>
-      <a href="{% url 'logout' %}"><button>Cerrar sesion</button></a>
+      <div class="dropdown">
+        <button
+          class="dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          {{user.first_name}} {{user.last_name}}
+        </button>
+        <ul class="dropdown-menu">
+          <a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesion</a>
+        </ul>
+      </div>
       {% else %}
       <nav>
         <ul class="nav-links">
@@ -404,5 +413,13 @@
       crossorigin="anonymous"
     ></script>
     <script src="{% static 'home/js/index.js' %}"></script>
+    <script>
+      const popoverTriggerList = document.querySelectorAll(
+        '[data-bs-toggle="popover"]'
+      );
+      const popoverList = [...popoverTriggerList].map(
+        (popoverTriggerEl) => new bootstrap.Popover(popoverTriggerEl)
+      );
+    </script>
   </body>
 </html>
