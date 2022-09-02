@@ -1,4 +1,5 @@
 from django.db import models
+from Clientes.models import Cliente
 
 # Create your models here.
 
@@ -7,11 +8,8 @@ class Prestamo(models.Model):
     loan_type = models.TextField()
     loan_date = models.TextField()
     loan_total = models.IntegerField()
-    customer_id = models.IntegerField()
+    customer_id = models.ForeignKey(Cliente, models.DO_NOTHING)
 
     class Meta:
-        managed = False
-        db_table = 'prestamo'
-        
-    def __str__(self):
-        return self.loan_id
+        verbose_name = 'Prestamo'
+        verbose_name_plural = 'Prestamos'
