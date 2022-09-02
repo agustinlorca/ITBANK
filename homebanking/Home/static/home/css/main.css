@@ -2,13 +2,15 @@ body {
   overflow: hidden;
   font-family: "rubik", verdana, sans-serif;
 }
+
 .bg-primary {
   background-color: rgb(255, 255, 255) !important;
 }
+
 #sidebar-container {
+  height: 100%;
   width: 21rem;
   padding: 20px;
-  height: 100%;
 }
 
 #sidebar-container .logo {
@@ -18,6 +20,13 @@ body {
 a {
   text-decoration: none;
   color: rgb(55, 55, 55);
+}
+
+a.nav-link:hover {
+  color: rgb(8, 137, 188);
+}
+a.dropdown-item:hover {
+  color: rgb(8, 137, 188);
 }
 a:hover {
   text-decoration: none;
@@ -36,24 +45,8 @@ a:hover {
   color: rgb(72, 72, 72);
 }
 
-header {
-  height: 90px;
-  padding: 18px 26px 20px 25px;
-  box-shadow: rgba(184, 202, 244, 0.5) 0px 8px 20px 0px;
-  min-width: 480px;
-}
-.encabezado {
-  margin: -60px 0px 0px 0px;
-}
-header .mj-bienvenida {
-  font-size: 24px;
-  font-weight: 450;
+.mj-bienvenida {
   color: rgb(8, 137, 188);
-  margin: -40px 0px 0px 340px;
-}
-header .avatar {
-  max-width: 45px;
-  margin: -65px 0px 0px 520px;
 }
 header .nombre-usuario {
   font-size: 17px;
@@ -61,20 +54,12 @@ header .nombre-usuario {
   color: rgb(72, 72, 72);
   margin: -29px 510px;
 }
-header button {
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border-radius: 30px;
-  border: none;
-  transition: background-color 0.5s ease 0s;
-  margin-left: 80rem;
-  background-color: transparent;
-  color: rgb(8, 137, 188);
-  font-weight: 450;
-  height: 3rem;
+#content {
+  overflow-y: auto;
+  height: 100vh;
+  padding-bottom: 5rem;
 }
-header button:hover {
-  background-color: #efefef;
-  color: rgb(8, 137, 188);
+
+.stat {
+  border-right: 1px solid grey;
 }

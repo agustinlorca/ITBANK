@@ -29,16 +29,28 @@
           src="{% static 'home/img/itbank-logoceleste.png' %}"
           alt="Logo_Itbank"
       /></a>
-
+      {% if user.is_authenticated %}
       <nav>
         <ul class="nav-links">
-          <li><a href="#">Lorem</a></li>
-          <li><a href="#">Lorem</a></li>
-          <li><a href="#">Lorem</a></li>
-          <li><a href="#">Lorem</a></li>
+          <li class="p-2 bg-info bg-opacity-10 border border-info rounded">
+            ¡Hola! {{user.first_name}} {{user.last_name}}
+          </li>
+          <li><a href="#dolar">Cotización del dolar</a></li>
+          <li><a href="#info">Informacion</a></li>
+          <li><a href="#footer">Sobre nosotros</a></li>
+        </ul>
+      </nav>
+      <a href="{% url 'logout' %}"><button>Cerrar sesion</button></a>
+      {% else %}
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#dolar">Cotización del dolar</a></li>
+          <li><a href="#info">Informacion</a></li>
+          <li><a href="#footer">Sobre nosotros</a></li>
         </ul>
       </nav>
       <a href="{% url 'login' %}"><button>Ingresar</button></a>
+      {% endif %}
     </header>
     {% block content %} {% endblock %}
     <!----- Grid con texto e imagen ----->
@@ -61,7 +73,7 @@
 
     <!---- Grid con API ---->
 
-    <div class="container d-flex justify-content-center">
+    <div class="container d-flex justify-content-center" id="dolar">
       <div class="row container-fluid">
         <div class="col-12 col-lg-4 p-2">
           <article class="card h-100 border-0">
@@ -225,7 +237,7 @@
 
     <!---- Grid con cards ---->
 
-    <div class="container d-flex justify-content-center">
+    <div class="container d-flex justify-content-center" id="info">
       <div class="row">
         <div class="col-12 col-lg-6 p-2">
           <article class="card h-100">
@@ -296,7 +308,7 @@
 
     <!----- Footer ----->
 
-    <div class="container relative-bottom">
+    <div class="container relative-bottom" id="footer">
       <footer
         class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top"
       >
