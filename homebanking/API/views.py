@@ -22,17 +22,18 @@ class ClienteViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     
     def get_queryset(self):
-        dni_usuario = self.request.user.username
-        cliente = Cliente.objects.filter(customer_dni=dni_usuario)
+        customer_id = self.request.user.id
+        cliente = Cliente.objects.filter(customer_id=customer_id)
         return cliente
         
 class CuentaViewSet(viewsets.ModelViewSet):
-    queryset = Cuenta.objects.all()
     serializer_class = CuentaSerializer
     permission_classes = [permissions.IsAuthenticated]
     
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+    def get_queryset(self):
+        customer_id = self.request.user.id
+        cuenta = Cuenta.objects.filter(customer_id=customer_id)
+        return cuenta
         
 class PrestamosViewSet(viewsets.ModelViewSet):
     queryset = Prestamo.objects.all()

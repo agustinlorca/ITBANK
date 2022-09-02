@@ -13,7 +13,7 @@ class ClienteSerializer(serializers.HyperlinkedModelSerializer):
     
     class Meta:
         model = Cliente
-        fields = ["customer_id", "customer_name", "customer_surname", "customer_dni", "dob", "branch_id"]
+        fields = ["customer_id", "customer_name", "customer_surname", "customer_DNI", "dob", "branch_id"]
         
         
 class CuentaSerializer(serializers.HyperlinkedModelSerializer):

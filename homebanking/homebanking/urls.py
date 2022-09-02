@@ -27,4 +27,3 @@ urlpatterns = [
     path("register_complete/", views.register_complete, name="register_complete"),
     path("api/", include("API.urls"), name="api")
 ]
-
