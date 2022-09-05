@@ -1,11 +1,11 @@
 from django.db import models
-from django.contrib.auth.models import User
+from Clientes.models import Cliente
 
 # Create your models here.
        
 class Cuenta(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
     account_id = models.AutoField(primary_key=True)
+    username = models.ForeignKey(Cliente, models.DO_NOTHING)
     balance = models.IntegerField()
     iban = models.TextField()
     tipo_cuenta = models.TextField(default="Classic")

@@ -13,14 +13,14 @@ class ClienteSerializer(serializers.HyperlinkedModelSerializer):
     
     class Meta:
         model = Cliente
-        fields = ["customer_id", "customer_name", "customer_surname", "customer_DNI", "dob", "branch_id"]
+        fields = ["customer_id", "username", "customer_name", "customer_surname", "customer_DNI", "dob", "branch_id"]
         
         
 class CuentaSerializer(serializers.HyperlinkedModelSerializer):
     
     class Meta:
         model = Cuenta
-        fields = ["account_id", "customer_id", "balance", "iban"]
+        fields = ["account_id", "username", "balance", "iban", "tipo_cuenta"]
         
 
 class PrestamoSerializer(serializers.HyperlinkedModelSerializer):

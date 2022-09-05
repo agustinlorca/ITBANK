@@ -22,8 +22,8 @@ class ClienteViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     
     def get_queryset(self):
-        customer_id = self.request.user.id
-        cliente = Cliente.objects.filter(customer_id=customer_id)
+        username = self.request.user.username
+        cliente = Cliente.objects.filter(username=username)
         return cliente
         
 class CuentaViewSet(viewsets.ModelViewSet):
@@ -31,8 +31,8 @@ class CuentaViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     
     def get_queryset(self):
-        customer_id = self.request.user.id
-        cuenta = Cuenta.objects.filter(customer_id=customer_id)
+        username = self.request.user.username
+        cuenta = Cuenta.objects.filter(username=username)
         return cuenta
         
 class PrestamosViewSet(viewsets.ModelViewSet):
