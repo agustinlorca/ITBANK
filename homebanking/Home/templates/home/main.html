@@ -1,0 +1,288 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Boostrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    {% block static %}
+    <link rel="stylesheet" href="{% static 'home/css/main.css' %}" />
+    {% endblock %}
+    <title>Menu Principal | ITBANK</title>
+  </head>
+
+  <body>
+    <div class="d-flex ">
+      <div id="sidebar-container" class="bg-primary">
+        <a href="{% url 'home'%}"><img src="{% static 'home/img/itbank-logoceleste.png' %}" alt="logo" width="180"></a>
+        <!-- MENU -->
+        <div class="menu">
+          <a href="#" class="d-block m-2 p-1"><img src="{% static 'home/icons/inicio.svg' %}"></i>Inicio</a>
+          <a href="#" class="d-block m-2 p-1"><img src="{% static 'home/icons/tarjetas.svg' %}">Tarjetas</a>
+          <a href="#" class="d-block m-2 p-1"><img src="{% static 'home/icons/transferencias.svg' %}" >Transferencias</a>
+          <a href="#" class="d-block m-2 p-1"><img src="{% static 'home/icons/inversiones.svg' %}">Ahorro e Inversiones</a>
+          <a href="#" class="d-block m-2 p-1"><img src="{% static 'home/icons/prestamos.svg' %}" >Préstamos</a>
+          <a href="#" class="d-block m-2 p-1"><img src="{% static 'home/icons/pagos.svg' %}">Pagos</a>
+          <a href="#" class="d-block m-2 p-1"><img src="{% static 'home/icons/seguridad.svg' %}">Seguridad</a>
+          <a href="#" class="d-block m-2 p-1"><img src="{% static 'home/icons/turnos.svg' %}">Turnos</a>
+          <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" class="d-block m-2 p-1"><img src="{% static 'home/icons/ayuda.svg' %}">Ayuda</a>
+        </div>
+        <!-- Descarga app -->
+        <div id="menuabajo">
+          <p class="app">Descargá la App desde</p>
+          <div d-flex>
+            <div class="d-flex mb-2">
+              <img src="{% static 'home/icons/apple.svg' %}" class="me-2">
+              <div> 
+                <small>Consíguela en</small>
+                <p class="fw-bold mb-0">App Store</p>
+              </div>
+              
+            </div>
+            <div class="d-flex" >
+              <img src="{% static 'home/icons/playstore.svg' %}" class="me-2">
+              <div>
+                <small>Disponible en</small>
+                <p class="fw-bold mb-0">Play store</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="w-100">
+        <nav class="navbar navbar-expand-lg border-bottom">
+          <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <ul class="navbar-nav ml-auto ">
+              <li class="nav-item dropdown ml-auto">
+                <a class="nav-link dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Informacion del cliente
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'data_cliente-list' %}">Datos de cliente</a></li>
+                  <li><a class="dropdown-item" href="{% url 'cuentas-list' %}">Cuenta</a></li>
+                  <li><a class="dropdown-item" href="{% url 'prestamos-list' %}">Préstamos</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'api-root' %}">Ó ingresa directamente al API-Root</a></li>
+                </ul>
+              </li>
+            </ul>
+            <div class="collapse navbar-collapse flex-row-reverse" id="navbarSupportedContent">
+              <div class="p-2"></div>
+              <div class="p-2"></div>
+              <div class="p-2"></div>
+              <div class="p-2"></div>
+              <div class="p-2"></div>
+              <ul class="navbar-nav ml-auto ">
+                <li class="nav-item dropdown ml-auto">
+                  <a class="nav-link dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{user.first_name}} {{user.last_name}}
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Perfil</a></li>
+                    <li><a class="dropdown-item" href="#">Seguridad</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesion</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <div id="content">
+          <!-- Mje bienvenida -->
+          <section class="py-3">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-9">
+                  <h1 class="mb-0 mj-bienvenida">¡Bienvenido! {{user.first_name}}</h1>
+                </div>
+                <div class="col-lg-3">
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Sección saldos -->
+          <section>
+            <div class="container">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-lg-4 d-flex stat my-3">
+                      <div class="mx-auto">
+                        <h6 class="text-muted">Caja de ahorro</h6>
+                        <h3>$*******</h3>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 d-flex stat my-3">
+                      <div class="mx-auto">
+                        <h6 class="text-muted">Cuenta corriente</h6>
+                        <h3>$*******</h3>
+                      </div>
+                      
+                    </div>
+                    <div class="col-lg-4 d-flex my-3">
+                      <div class="mx-auto">
+                        <h6 class="text-muted">Caja de ahorro en dólares</h6>
+                      <h3>$*******</h3>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Sección gastos y movimientos -->
+          <section>
+            <div class="container">
+              <div class="row">
+                <!-- Gráfico -->
+                <div class="col-lg-5 my-3">
+                  <div class="card rounded-0">
+                    <div class="card-header bg-light">
+                      <h6 class="font-weight-bold mb-0">Gastos de los últimos 4 meses</h6>
+                    </div>
+                    <div class="card-body">
+                      <canvas id="myChart"></canvas>
+                    </div>
+                  </div>
+                </div>
+                <!-- Movimientos -->
+                <div class="col-lg-4 my-3">
+                  <div class="card">
+                    <div class="card-header">
+                      <h6 class="font-weight-bold mb-0" >Movimientos</h6>
+                    </div>
+                    <div class="card-body">
+                      <div class="d-flex border-bottom py-2">
+                        <div>
+                          <h6 class="d-inline-block">Ingresaron a tu cuenta</h6>
+                          <span class="bg-success p-1 text-dark bg-opacity-50 rounded">$5500</span>
+                          <small class="d-block text-muted">De: Moses Greer</small>
+                        </div>
+                      </div>
+                      <div class="d-flex border-bottom py-2">
+                        <div>
+                          <h6 class="d-inline-block">Ingresaron a tu cuenta</h6>
+                          <span class="bg-success p-1 text-dark bg-opacity-50 rounded">$250000</span>
+                          <small class="d-block text-muted">De: Itbank S.A.</small>
+                        </div>
+                      </div>
+                      <div class="d-flex border-bottom py-2">
+                        <div>
+                          <h6 class="d-inline-block">Enviaste</h6>
+                          <span class="bg-danger p-1 text-dark bg-opacity-50 rounded">$15000</span>
+                          <small class="d-block text-muted">A: Leslie Moses</small>
+                        </div>
+                      </div>
+                      <div class="d-flex border-bottom py-2">
+                        <div>
+                          <h6 class="d-inline-block">Pagaste</h6>
+                          <span class="bg-danger p-1 text-dark bg-opacity-50 rounded">$8000</span>
+                          <small class="d-block text-muted">A: Mercado Libre </small>
+                        </div>
+                      </div>
+                      <div class="d-flex border-bottom py-2">
+                        <div>
+                          <h6 class="d-inline-block">Pagaste</h6>
+                          <span class="bg-danger p-1 text-dark bg-opacity-50 rounded">$2500</span>
+                          <small class="d-block text-muted">A: YPF </small>
+                        </div>
+                      </div>
+                      <div class="d-flex border-bottom py-2">
+                        <div>
+                          <h6 class="d-inline-block mb-0">Ingresaron a tu cuenta</h6>
+                          <span class="bg-success p-1 text-dark bg-opacity-50 rounded">$5500</span>
+                          <small class="d-block text-muted">De: Gonzalo Monasterio</small>
+                        </div>
+                        
+                      </div>
+                      <div class="d-flex py-2">
+                       
+                        <button type="button" class="btn btn-outline-secondary w-100">Ver históricos</button>
+                      </div>
+                     
+                      
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </section>
+          
+        </div>
+      </div>
+    </div>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Buscando un operador</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Cargando...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js" integrity="sha256-+8RZJua0aEWg+QVVKg4LEzEEm/8RFez5Tb4JBNiV5xA=" crossorigin="anonymous"></script>
+  <script>
+    const labels = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+    ];
+  
+    const data = {labels: [
+    'Junio',
+    'Julio',
+    'Agosto',
+    'Septiembre'],
+    datasets: [{
+    label: 'Gastos del mes',
+    data: [30000, 50000, 45000,60000],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)',
+      'rgb(0, 149, 37)'
+
+    ],
+    maxBarThickness:40,
+    hoverOffset: 4
+    }]};
+  
+    const config = {
+      type: 'doughnut',
+      data: data,
+      options: {}
+    };
+  </script>
+  <script>
+    const myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+  </script>
+</html>
