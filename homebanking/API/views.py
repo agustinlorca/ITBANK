@@ -1,7 +1,6 @@
 from Clientes.models import Cliente
 from Cuentas.models import Cuenta
 from Prestamos.models import Prestamo
-from registration.models import Usuario
 from API.serializers import ClienteSerializer, CuentaSerializer, PrestamoSerializer, UserSerializer
 from rest_framework import permissions, viewsets
 from django.contrib.auth.models import User
@@ -10,7 +9,7 @@ from rest_framework.response import Response
 # Create your views here.
 
 class UserViewSet(viewsets.ModelViewSet):
-    queryset = Usuario.objects.all()
+    queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
     
@@ -22,8 +21,8 @@ class ClienteViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     
     def get_queryset(self):
-        username = self.request.user.username
-        cliente = Cliente.objects.filter(username=username)
+        user_id = self.request.user.id
+        cliente = Cliente.objects.filter(user_id=user_id)
         return cliente
         
 class CuentaViewSet(viewsets.ModelViewSet):
@@ -31,15 +30,16 @@ class CuentaViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     
     def get_queryset(self):
-        username = self.request.user.username
-        cuenta = Cuenta.objects.filter(username=username)
+        user_id = self.request.user.id
+        cuenta = Cuenta.objects.filter(user_id=user_id)
         return cuenta
         
 class PrestamosViewSet(viewsets.ModelViewSet):
-    queryset = Prestamo.objects.all()
     serializer_class = PrestamoSerializer
     permission_classes = [permissions.IsAuthenticated]
     
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+    def get_queryset(self):
+        user_id = self.request.user.id
+        prestamo = Prestamo.objects.filter(user_id=user_id)
+        return prestamo
         

@@ -1,11 +1,10 @@
 from django.db import models
-from registration.models import Usuario
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 class Cliente(models.Model):
-    user = models.OneToOneField(Usuario, on_delete=models.CASCADE)
-    username = models.CharField(max_length=255)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     customer_id = models.AutoField(primary_key=True)
     customer_name = models.TextField()
     customer_surname = models.TextField()
