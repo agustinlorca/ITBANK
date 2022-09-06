@@ -7,6 +7,9 @@ from django.contrib.auth.models import User
 from rest_framework.response import Response
 from Sucursales.models import Sucursal
 from rest_framework.decorators import action
+from django_filters.rest_framework import DjangoFilterBackend
+
+from Tarjetas.models import Tarjetas
 
 # Create your views here.
 
@@ -50,21 +53,25 @@ class DireccionesViewSet(viewsets.ModelViewSet):
         user_id = self.request.user.id
         direccion = DireccionCliente.objects.filter(user_id=user_id)
         return direccion
-    
-    def update(self, request, pk=None):
-        pass
 
 class SucursalViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
-    queryset = Sucursal.objects.all()
-    serializer_class = SucursalSerializer
+    queryset = Prestamo.objects.all()
+    serializer_class = PrestamoSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['branch_id']
+
 
 class TarjetasViewSet(viewsets.ModelViewSet):
     serializer_class = TarjetaSerializer
+    queryset = Tarjetas.objects.all()
     permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['user_id']
     
-    def get_queryset(self):
-        user_id = self.request.user.id
-        prestamo = Prestamo.objects.filter(user_id=user_id)
-        return prestamo
-
+class SucursalPublicaViewSet(viewsets.ModelViewSet):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    queryset = Sucursal.objects.all()
+    serializer_class = SucursalSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['branch_id']

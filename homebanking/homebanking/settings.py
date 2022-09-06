@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "Tarjetas",
     "crispy_forms",
     "rest_framework",
+    "django_filters",
     
 ]
 
@@ -145,5 +146,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
-    "PAGE_SIZE": 5
+    "PAGE_SIZE": 5,
 }
