@@ -7,8 +7,8 @@ class Cuenta(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     account_id = models.AutoField(primary_key=True)
     balance = models.IntegerField()
-    iban = models.TextField()
-    tipo_cuenta = models.TextField(default="Classic")
+    iban = models.CharField(max_length=20)
+    tipo_cuenta = models.CharField(max_length=20, default="Classic")
 
     class Meta:
         verbose_name = 'Cuenta'

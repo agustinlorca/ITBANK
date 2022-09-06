@@ -4,10 +4,10 @@ from django.db import models
 
 class Empleado(models.Model):
     employee_id = models.AutoField(primary_key=True)
-    employee_name = models.TextField()
-    employee_surname = models.TextField()
-    employee_hire_date = models.TextField()
-    employee_dni = models.TextField()  # Field name made lowercase.
+    employee_name = models.CharField(max_length=30)
+    employee_surname = models.CharField(max_length=30)
+    employee_hire_date = models.CharField(max_length=30)
+    employee_dni = models.CharField(max_length=8, unique=True)  # Field name made lowercase.
     branch_id = models.IntegerField()
 
     class Meta:
@@ -16,10 +16,10 @@ class Empleado(models.Model):
 
 class DireccionEmpleado(models.Model):
     id_direccion = models.AutoField(primary_key=True)
-    direccion = models.TextField()
-    ciudad = models.TextField()
-    provincia = models.TextField()
-    pais = models.TextField()
+    direccion = models.CharField(max_length=50)
+    ciudad = models.CharField(max_length=30)
+    provincia = models.CharField(max_length=30)
+    pais = models.CharField(max_length=30)
     employee_id = models.ForeignKey(Empleado, models.DO_NOTHING)
 
     class Meta:
