@@ -65,18 +65,50 @@
               <span class="navbar-toggler-icon"></span>
             </button>
             <ul class="navbar-nav ml-auto ">
+              {% if request.user.is_staff %}
               <li class="nav-item dropdown ml-auto">
                 <a class="nav-link dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Informacion del cliente
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{% url 'data_cliente-list' %}">Datos de cliente</a></li>
-                  <li><a class="dropdown-item" href="{% url 'cuentas-list' %}">Cuenta</a></li>
-                  <li><a class="dropdown-item" href="{% url 'prestamos-list' %}">Préstamos</a></li>
+                  <li><a class="dropdown-item" href="{% url 'Informacion Cliente-list' %}">Cliente</a></li>
+                  <li><a class="dropdown-item" href="{% url 'Informacion Cuentas-list' %}">Cuenta</a></li>
+                  <li><a class="dropdown-item" href="{% url 'Prestamos-list' %}">Préstamos</a></li>
+                  <li><a class="dropdown-item" href="{% url 'Direcciones-list' %}">Dirección</a></li>
+                  <li><a class="dropdown-item" href="{% url 'Tarjetas-list' %}">Tarjetas</a></li>
+                  <li><a class="dropdown-item" href="{% url 'Sucursales-list' %}">Sucursales</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="{% url 'api-root' %}">Ó ingresa directamente al API-Root</a></li>
+                  <li><a class="dropdown-item" href="{% url 'api-root' %}">API-Root</a></li>
                 </ul>
               </li>
+              <li class="nav-item dropdown ml-auto">
+                <a class="nav-link dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Listado de todos los clientes
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'Lista de Usuarios-list' %}">Usuarios</a></li>
+                  <li><a class="dropdown-item" href="{% url 'Prestamos por Sucursal-list' %}">Prestamos por sucursal</a></li>
+                  <li><a class="dropdown-item" href="{% url 'Lista Tarjetas-list' %}">Tarjetas</a></li>
+                  <li><a class="dropdown-item" href="{% url 'Sucursales-list' %}">Sucursales</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'api-root' %}">API-Root</a></li>
+                </ul>
+              </li>
+              {% else %}
+              <li class="nav-item dropdown ml-auto">
+                <a class="nav-link dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Informacion del cliente
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'Informacion Cliente-list' %}">Cliente</a></li>
+                  <li><a class="dropdown-item" href="{% url 'Informacion Cuentas-list' %}">Cuenta</a></li>
+                  <li><a class="dropdown-item" href="{% url 'Prestamos-list' %}">Préstamos</a></li>
+                  <li><a class="dropdown-item" href="{% url 'Direcciones-list' %}">Dirección</a></li>
+                  <li><a class="dropdown-item" href="{% url 'Tarjetas-list' %}">Tarjetas</a></li>
+                  <li><a class="dropdown-item" href="{% url 'Sucursales-list' %}">Sucursales</a></li>
+                </ul>
+              </li>
+              {% endif %}
             </ul>
             <div class="collapse navbar-collapse flex-row-reverse" id="navbarSupportedContent">
               <div class="p-2"></div>
