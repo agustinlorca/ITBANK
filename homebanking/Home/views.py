@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from Cuentas.models import Cuenta
 # Create your views here.
 
 def home(request):
@@ -9,4 +10,6 @@ def home(request):
 @login_required
 
 def main(request):
-    return render(request, "home/main.html",)
+    user_id = request.user.id
+    cuenta = Cuenta.objects.filter(user_id=user_id)
+    return render(request, "home/main.html",{'cuentas':cuenta})

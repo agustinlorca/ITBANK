@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "registration",
     "Tarjetas",
     "crispy_forms",
+    'widget_tweaks',
     "rest_framework",
     "django_filters",
     

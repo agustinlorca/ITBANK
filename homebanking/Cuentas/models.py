@@ -15,4 +15,4 @@ class Cuenta(models.Model):
         verbose_name_plural = 'Cuentas'
         
     def __str__(self):
-        return self.user.username
+        return (f'{self.user.first_name} {self.user.last_name}')

@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from Sucursales.models import Sucursal
 # Create your models here.
 
 class Cliente(models.Model):
@@ -10,14 +10,14 @@ class Cliente(models.Model):
     customer_surname = models.CharField(max_length=30)
     customer_DNI = models.IntegerField(null=True, blank=True)
     dob = models.DateField(null=True, blank=True)
-    branch_id = models.IntegerField()   
+    branch_id = models.ForeignKey(Sucursal, on_delete=models.CASCADE) 
 
     class Meta:
         verbose_name = 'Cliente'
         verbose_name_plural = 'Clientes'
         
     def __str__(self):
-        return self.customer_name
+        return (f'{self.user.first_name} {self.user.last_name}')
     
 
 class DireccionCliente(models.Model):
@@ -33,5 +33,5 @@ class DireccionCliente(models.Model):
         verbose_name_plural = 'Direcciones de los Clientes'
         
     def __str__(self):
-        return self.user.username
+        return (f'{self.user.first_name} {self.user.last_name}')
         

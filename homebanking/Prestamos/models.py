@@ -10,11 +10,11 @@ class Prestamo(models.Model):
     loan_type = models.CharField(max_length=30)
     loan_date = models.DateField(null=True, blank=True)
     loan_total = models.IntegerField()
-    branch_id = models.ForeignKey(Sucursal, on_delete=models.DO_NOTHING)
+    branch_id = models.ForeignKey(Sucursal, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Prestamo'
         verbose_name_plural = 'Prestamos'
         
     def __str__(self):
-        return self.user.username
+        return (f'{self.user.first_name} {self.user.last_name}')

@@ -17,4 +17,4 @@ class Tarjetas(models.Model):
         verbose_name_plural = 'Tarjetas'
         
     def __str__(self):
-        return self.user.username
+        return (f'{self.user.first_name} {self.user.last_name}')

@@ -25,7 +25,7 @@
         <a href="{% url 'home'%}"><img src="{% static 'home/img/itbank-logoceleste.png' %}" alt="logo" width="180"></a>
         <!-- MENU -->
         <div class="menu">
-          <a href="#" class="d-block m-2 p-1"><img src="{% static 'home/icons/inicio.svg' %}"></i>Inicio</a>
+          <a href="{% url 'mains' %}" class="d-block m-2 p-1"><img src="{% static 'home/icons/inicio.svg' %}"></i>Inicio</a>
           <a href="#" class="d-block m-2 p-1"><img src="{% static 'home/icons/tarjetas.svg' %}">Tarjetas</a>
           <a href="#" class="d-block m-2 p-1"><img src="{% static 'home/icons/transferencias.svg' %}" >Transferencias</a>
           <a href="#" class="d-block m-2 p-1"><img src="{% static 'home/icons/inversiones.svg' %}">Ahorro e Inversiones</a>
@@ -105,129 +105,43 @@
           <section class="py-3">
             <div class="container">
               <div class="row">
-                <div class="col-lg-6">
-                  <h1 class="mb-0 mj-bienvenida">¡Bienvenido! {{user.first_name}}</h1>
+                <div class="col-lg-9">
+                  <h1 class="mb-0 mj-bienvenida">Solicitud de Préstamos pre-aprobados</h1>
                 </div>
-                {% for cuenta in cuentas %}
-                <div class="col-lg-6 my-1 ">
-                  <h2>Tipo de cuenta: {{cuenta.tipo_cuenta}}</h2>
-                </div>
-                {% endfor %}
               </div>
             </div>
           </section>
           <!-- Sección saldos -->
           <section>
             <div class="container">
-              <div class="card">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-lg-4 d-flex stat my-3">
-                      {% for cuenta in cuentas %}
-                      <div class="mx-auto">
-                        <h6 class="text-muted">Caja de ahorro</h6>
-                        <h7 class="text-muted">CBU: {{cuenta.iban}}</h7>
-                        <h3>${{cuenta.balance}}</h3>
-                      </div>
-                      {% endfor %}
-                    </div>
-                    <div class="col-lg-4 d-flex stat my-3">
-                      <div class="mx-auto">
-                        <h6 class="text-muted">Cuenta corriente</h6>
-                        <h3>$*******</h3>
-                      </div>
-                      
-                    </div>
-                    <div class="col-lg-4 d-flex my-3">
-                      <div class="mx-auto">
-                        <h6 class="text-muted">Caja de ahorro en dólares</h6>
-                      <h3>$*******</h3>
-                      </div>
-                    </div>
-
-                  </div>
-
-                </div>
+              {% if 'classic' in request.GET %}
+              <div class="alert alert-danger shadow w-50 " role="alert">
+                <h4 class="alert-heading">¡Error!</h4>
+                <hr>
+                <p class="mb-0">El monto del prestamo solicitado excede el límite de los $100.000 como cliente "Classic"</p>
               </div>
-            </div>
-          </section>
-          <!-- Sección gastos y movimientos -->
-          <section>
-            <div class="container">
-              <div class="row">
-                <!-- Gráfico -->
-                <div class="col-lg-5 my-3">
-                  <div class="card rounded-0">
-                    <div class="card-header bg-light">
-                      <h6 class="font-weight-bold mb-0">Gastos de los últimos 4 meses</h6>
-                    </div>
-                    <div class="card-body">
-                      <canvas id="myChart"></canvas>
-                    </div>
-                  </div>
-                </div>
-                <!-- Movimientos -->
-                <div class="col-lg-4 my-3">
-                  <div class="card">
-                    <div class="card-header">
-                      <h6 class="font-weight-bold mb-0" >Movimientos</h6>
-                    </div>
-                    <div class="card-body">
-                      <div class="d-flex border-bottom py-2">
-                        <div>
-                          <h6 class="d-inline-block">Ingresaron a tu cuenta</h6>
-                          <span class="bg-success p-1 text-dark bg-opacity-50 rounded">$5500</span>
-                          <small class="d-block text-muted">De: Moses Greer</small>
-                        </div>
-                      </div>
-                      <div class="d-flex border-bottom py-2">
-                        <div>
-                          <h6 class="d-inline-block">Ingresaron a tu cuenta</h6>
-                          <span class="bg-success p-1 text-dark bg-opacity-50 rounded">$250000</span>
-                          <small class="d-block text-muted">De: Itbank S.A.</small>
-                        </div>
-                      </div>
-                      <div class="d-flex border-bottom py-2">
-                        <div>
-                          <h6 class="d-inline-block">Enviaste</h6>
-                          <span class="bg-danger p-1 text-dark bg-opacity-50 rounded">$15000</span>
-                          <small class="d-block text-muted">A: Leslie Moses</small>
-                        </div>
-                      </div>
-                      <div class="d-flex border-bottom py-2">
-                        <div>
-                          <h6 class="d-inline-block">Pagaste</h6>
-                          <span class="bg-danger p-1 text-dark bg-opacity-50 rounded">$8000</span>
-                          <small class="d-block text-muted">A: Mercado Libre </small>
-                        </div>
-                      </div>
-                      <div class="d-flex border-bottom py-2">
-                        <div>
-                          <h6 class="d-inline-block">Pagaste</h6>
-                          <span class="bg-danger p-1 text-dark bg-opacity-50 rounded">$2500</span>
-                          <small class="d-block text-muted">A: YPF </small>
-                        </div>
-                      </div>
-                      <div class="d-flex border-bottom py-2">
-                        <div>
-                          <h6 class="d-inline-block mb-0">Ingresaron a tu cuenta</h6>
-                          <span class="bg-success p-1 text-dark bg-opacity-50 rounded">$5500</span>
-                          <small class="d-block text-muted">De: Gonzalo Monasterio</small>
-                        </div>
-                        
-                      </div>
-                      <div class="d-flex py-2">
-                       
-                        <button type="button" class="btn btn-outline-secondary w-100">Ver históricos</button>
-                      </div>
-                     
-                      
-                    </div>
-                    
-                  </div>
-                </div>
+              {% endif %}
+              {% if 'gold' in request.GET %}
+              <div class="alert alert-danger shadow w-50 " role="alert">
+                <h4 class="alert-heading">¡Error!</h4>
+                <hr>
+                <p class="mb-0">El monto del prestamo solicitado excede el límite de los $300.000 como cliente "Gold"</p>
               </div>
-              
+              {% endif %}
+              {% if 'black' in request.GET %}
+              <div class="alert alert-danger shadow w-50 " role="alert">
+                <h4 class="alert-heading">¡Error!</h4>
+                <hr>
+                <p class="mb-0">El monto del prestamo solicitado excede el límite de los $500.000 como cliente "Black"</p>
+              </div>
+              {% endif %}
+              {% if 'aprobado' in request.GET %}
+              <div class="alert alert-success shadow w-50 " role="alert">
+                <h4 class="alert-heading">¡Tu solicitud de prestamo fue aprobada!</h4>
+                <hr>
+                <p class="mb-0">El monto solicitado ya está acreditado en tu cuenta.</p>
+              </div>
+              {% endif %}
             </div>
           </section>
           
@@ -249,46 +163,23 @@
     </div>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js" integrity="sha256-+8RZJua0aEWg+QVVKg4LEzEEm/8RFez5Tb4JBNiV5xA=" crossorigin="anonymous"></script>
-  <script>
-    const labels = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-    ];
-  
-    const data = {labels: [
-    'Junio',
-    'Julio',
-    'Agosto',
-    'Septiembre'],
-    datasets: [{
-    label: 'Gastos del mes',
-    data: [30000, 50000, 45000,60000],
-    backgroundColor: [
-      'rgb(255, 99, 132)',
-      'rgb(54, 162, 235)',
-      'rgb(255, 205, 86)',
-      'rgb(0, 149, 37)'
+  <script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
+></script>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+></script>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+></script>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
+/>
 
-    ],
-    maxBarThickness:40,
-    hoverOffset: 4
-    }]};
-  
-    const config = {
-      type: 'doughnut',
-      data: data,
-      options: {}
-    };
-  </script>
-  <script>
-    const myChart = new Chart(
-      document.getElementById('myChart'),
-      config
-    );
-  </script>
+ 
 </html>
