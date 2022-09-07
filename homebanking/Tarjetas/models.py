@@ -15,3 +15,6 @@ class Tarjetas(models.Model):
     class Meta:
         verbose_name = 'Tarjeta'
         verbose_name_plural = 'Tarjetas'
+        
+    def __str__(self):
+        return self.user.username

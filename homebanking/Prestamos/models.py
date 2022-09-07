@@ -10,7 +10,7 @@ class Prestamo(models.Model):
     loan_type = models.CharField(max_length=30)
     loan_date = models.DateField(null=True, blank=True)
     loan_total = models.IntegerField()
-    branch_name = models.ForeignKey(Sucursal, on_delete=models.DO_NOTHING)
+    branch_id = models.ForeignKey(Sucursal, on_delete=models.DO_NOTHING)
 
     class Meta:
         verbose_name = 'Prestamo'
