@@ -16,7 +16,9 @@ from django.core.exceptions import PermissionDenied
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAdminUser]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['id', "username"]
 
 class ClienteViewSet(viewsets.ModelViewSet):
     serializer_class = ClienteSerializer
@@ -101,7 +103,7 @@ class DireccionesViewSet(viewsets.ModelViewSet):
         return direccion
 
 class SucursalViewSet(viewsets.ModelViewSet):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAdminUser]
     queryset = Prestamo.objects.all()
     serializer_class = PrestamoSerializer
     filter_backends = [DjangoFilterBackend]
@@ -110,10 +112,20 @@ class SucursalViewSet(viewsets.ModelViewSet):
 
 class TarjetasViewSet(viewsets.ModelViewSet):
     serializer_class = TarjetaSerializer
-    queryset = Tarjetas.objects.all()
     permission_classes = [permissions.IsAuthenticated]
+    
+    def get_queryset(self):
+            user_id = self.request.user.id
+            tarjetas = Tarjetas.objects.filter(user_id=user_id)
+            return tarjetas
+    
+class TarjetasListViewSet(viewsets.ModelViewSet):
+    serializer_class = TarjetaSerializer
+    permission_classes = [permissions.IsAdminUser]
+    queryset = Tarjetas.objects.all()
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['user_id']
+
     
 class SucursalPublicaViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
