@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
     
 class Tarjetas(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, unique=False)    
-    numero = models.IntegerField(primary_key=True)
-    cvv = models.IntegerField()  # Field name made lowercase.
+    numero = models.IntegerField(primary_key=True,max_length=16)
+    cvv = models.IntegerField(max_length=3)  # Field name made lowercase.
     fecha_de_otorgamiento = models.DateField(null=True, blank=True)
     fecha_de_vencimiento = models.DateField(null=True, blank=True)
     tipo_de_tarjeta = models.CharField(max_length=30)
