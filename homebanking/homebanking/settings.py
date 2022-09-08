@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "registration",
     "Tarjetas",
     'widget_tweaks',
+    "django_filters",
     "rest_framework",
 ]
 

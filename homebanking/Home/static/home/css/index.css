@@ -101,13 +101,6 @@ button:hover {
   position: relative;
   width: 80%;
 }
-#card {
-  opacity: 0.7;
-}
-
-#card:hover {
-  opacity: 1;
-}
 
 /* Titulo animado */
 
