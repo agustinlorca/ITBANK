@@ -6,6 +6,12 @@ from Sucursales.models import Sucursal
 from Tarjetas.models import Tarjetas
 from django.contrib.auth.models import User
 
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    
+    class Meta:
+        model = User
+        fields = ["id", "username"]
+
 class ClienteSerializer(serializers.HyperlinkedModelSerializer):
     
     class Meta:
@@ -23,14 +29,15 @@ class SucursalSerializer(serializers.HyperlinkedModelSerializer):
     
     class Meta:
         model = Sucursal
-        fields = ["branch_id", "branch_number", "branch_name", "branch_address_id"]
+        fields = ["branch_id", "branch_name"]
         
 class PrestamoSerializer(serializers.HyperlinkedModelSerializer):
     branch_id = SucursalSerializer()
+    user = UserSerializer()
       
     class Meta:
         model = Prestamo
-        fields = ["loan_id", "loan_type", "loan_date", "loan_total", "branch_id"]
+        fields = ["loan_id", "loan_type", "loan_date", "loan_total", "branch_id", "user"]
       
         
 class DireccionSerializer(serializers.HyperlinkedModelSerializer):
@@ -38,12 +45,7 @@ class DireccionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = DireccionCliente
         fields = ["id_direccion", "direccion", "ciudad", "provincia", "pais"]
-          
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    
-    class Meta:
-        model = User
-        fields = ["id", "username"]
+        
         
 class TarjetaSerializer(serializers.HyperlinkedModelSerializer):
     user = UserSerializer()
