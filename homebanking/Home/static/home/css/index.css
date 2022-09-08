@@ -101,6 +101,13 @@ button:hover {
   position: relative;
   width: 80%;
 }
+#card {
+  opacity: 0.7;
+}
+
+#card:hover {
+  opacity: 1;
+}
 
 /* Titulo animado */
 
@@ -112,6 +119,18 @@ button:hover {
   margin-top: 200px;
   animation-duration: 2s;
   animation-name: slidein;
+}
+
+@media screen and (max-width: 600px) {
+  .titulo {
+    position: absolute;
+    font-size: 55px;
+    color: #000;
+    font-weight: 500;
+    margin-top: 100px;
+    animation-duration: 2s;
+    animation-name: slidein;
+  }
 }
 
 @keyframes slidein {
