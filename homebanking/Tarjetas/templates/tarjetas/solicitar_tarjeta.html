@@ -26,7 +26,7 @@
         <!-- MENU -->
         <div class="menu">
           <a href="{% url 'mains' %}" class="d-block m-2 p-1"><img src="{% static 'home/icons/inicio.svg' %}"></i>Inicio</a>
-          <a href="{% url 'tarjeta' %}" class="d-block m-2 p-1"><img src="{% static 'home/icons/tarjetas.svg' %}">Tarjetas</a>
+          <a href="{% url 'tarjeta' %}" class="d-block m-2 p-1" ><img src="{% static 'home/icons/tarjetas.svg' %}">Tarjetas</a>
           <a href="#" class="d-block m-2 p-1"><img src="{% static 'home/icons/transferencias.svg' %}" >Transferencias</a>
           <a href="#" class="d-block m-2 p-1"><img src="{% static 'home/icons/inversiones.svg' %}">Ahorro e Inversiones</a>
           <a href="{% url 'prestamo' %}" class="d-block m-2 p-1"><img src="{% static 'home/icons/prestamos.svg' %}" >Préstamos</a>
@@ -137,55 +137,76 @@
           <section class="py-3">
             <div class="container">
               <div class="row">
-                <div class="col-lg-9">
-                  <h1 class="mb-0 mj-bienvenida">Solicitud de Préstamos pre-aprobados</h1>
+                <div class="col-lg-6">
+                  <h1 class="mb-0 mj-bienvenida">Tarjetas</h1> 
                 </div>
               </div>
             </div>
           </section>
-          <!-- Sección saldos -->
+          <!-- Tarjeta -->
           <section>
             <div class="container">
-              {% if 'classic' in request.GET %}
-              <div class="alert alert-danger shadow w-50 " role="alert">
-                <h4 class="alert-heading">¡Error!</h4>
-                <hr>
-                <p class="mb-0">El monto del prestamo solicitado excede el límite de los $100.000 como cliente "Classic"</p>
+              <div class="row">
+                <!-- Gráfico -->
+                <div class="col-lg-6 my-4">
+                  <div class="contenedor">
+                    <section class="tarjeta" id="tarjeta">
+                     <div class="delantera">
+                      <div class="logo" id="logo-banco">
+                        <img src="{% static 'home/img/itbank-logoblanco.png' %}" alt="ITBANK" width="200">
+                      </div>
+                             
+                       <div class="datos">                    
+                         <div class="grupo" id="numero">
+                           <p class="numero"></p>
+                         </div>                    
+                         <div class="flexbox">
+                           <div class="grupo" id="nombre">
+                             <p class="nombre">{{user.last_name}} {{user.first_name}}</p>
+                           </div>
+                           <div class="grupo" id="expiracion"> 
+                             <p class="expiracion"></p>
+                           </div>                        
+                         </div>
+                         <div class="logo-marca" id="logo-marca">
+                          <img src="{% static 'home/img/visa.png' %}" alt="Visa">
+                        </div>
+                       </div>
+                      </div>
+                     <div class="trasera">
+                       <div class="barra-magnetica"></div>
+                       <div class="datos">
+                         <div class="grupo" id="firma">
+                           <div class="firma"><p></p></div>
+                         </div> 
+                        </div>
+                       <p class="leyenda">Esta tarjeta es intransferible y para uso exclusivo del titular, de acuerdo con los términos y condiciones que rigen en la utilización de la misma, valida hasta el último día del mes indicado. Esta tarjeta es propiedad del ITBANK.</p>
+                       <a class="link-banco">www.itbank.com</a>
+                     </div>
+                    </section>
+                  </div>
+                </div>
+                <!-- Movimientos -->
+                <div class="alert alert-info col-lg-4" role="alert">
+                  <h4 class="alert-heading">¿Todavía no tenes tu tarjeta de ITBANK?</h4>
+                  <p>Adquiriendo la tarjeta de ITBANK sos parte de numerosos beneficios. Conocelos a continuación.</p>
+                  <hr>
+                  <p class="mb-0">Hasta 15% de descuento comprando pasajes en Aerolineas Argentinas.</p>
+                  <hr>
+                  <p class="mb-0">Tenés 10% de descuento todos los Lunes comprando combustible en estaciones YPF.</p>
+                  <hr>
+                  <p class="mb-0">Hasta 24 cuotas sin interés comprando en cualquier tienda de electrónica.</p>
+                  <hr>
+                  <p class="mb-0">Utilizando nuestra tarjeta en PedidosYa, adquirís beneficios exclusivos todos los viernes.</p>
+                  <hr>
+                  <p class="mb-0 fw-bold">¿Qué estás esperando para adquirirla?</p>
+                  <p> Ponete en contacto con un asesor ahora mismo en la sección "Ayuda" y tendrás tu tarjeta en menos de 48 hs.</p>
+
+                </div>
               </div>
-              {% endif %}
-              {% if 'gold' in request.GET %}
-              <div class="alert alert-danger shadow w-50 " role="alert">
-                <h4 class="alert-heading">¡Error!</h4>
-                <hr>
-                <p class="mb-0">El monto del prestamo solicitado excede el límite de los $300.000 como cliente "Gold"</p>
-              </div>
-              {% endif %}
-              {% if 'black' in request.GET %}
-              <div class="alert alert-danger shadow w-50 " role="alert">
-                <h4 class="alert-heading">¡Error!</h4>
-                <hr>
-                <p class="mb-0">El monto del prestamo solicitado excede el límite de los $500.000 como cliente "Black"</p>
-              </div>
-              {% endif %}
-              {% if 'aprobado' in request.GET %}
-              <div class="alert alert-success shadow w-50 " role="alert">
-                <h4 class="alert-heading">¡Tu solicitud de prestamo fue aprobada!</h4>
-                <hr>
-                <p class="mb-0">El monto solicitado ya está acreditado en tu cuenta.</p>
-              </div>
-              {% endif %}
-              {% if 'rechazado' in request.GET %}
-              <div class="alert alert-danger shadow w-50 " role="alert">
-                <h4 class="alert-heading">Error al solicitar el préstamo</h4>
-                <hr>
-                <p class="mb-0">Usted ya tiene prestamos asociados a su cuenta.</p>
-                <hr>
-                <small>En caso de ser un error, solicite ayuda a un operador en la sección "Ayuda" o contáctese al 0800-666-345</small>
-              </div>
-              {% endif %}
+              
             </div>
           </section>
-          
         </div>
       </div>
     </div>
@@ -204,23 +225,60 @@
     </div>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-  <script
-  type="text/javascript"
-  src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
-></script>
-<script
-  type="text/javascript"
-  src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
-></script>
-<script
-  type="text/javascript"
-  src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
-></script>
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
-/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js" integrity="sha256-+8RZJua0aEWg+QVVKg4LEzEEm/8RFez5Tb4JBNiV5xA=" crossorigin="anonymous"></script>
+  <script>
+    const labels = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+    ];
+  
+    const data = {labels: [
+    'Junio',
+    'Julio',
+    'Agosto',
+    'Septiembre'],
+    datasets: [{
+    label: 'Gastos del mes',
+    data: [30000, 50000, 45000,60000],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)',
+      'rgb(0, 149, 37)'
 
- 
+    ],
+    maxBarThickness:40,
+    hoverOffset: 4
+    }]};
+  
+    const config = {
+      type: 'doughnut',
+      data: data,
+      options: {}
+    };
+  </script>
+  <script>
+    const myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+  </script>
+  <script>
+    const mostrarFrente = () => {
+	    if(tarjeta.classList.contains('active')){
+	    	tarjeta.classList.remove('active');
+	    }
+    }
+    // * Rotacion de la tarjeta
+    tarjeta.addEventListener('click', () => 
+    {
+    	tarjeta.classList.toggle('active');
+    });
+</script>
 </html>
+
+

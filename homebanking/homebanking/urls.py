@@ -29,5 +29,6 @@ urlpatterns = [
     path("accounts/prestamos/", prestamo_view.prestamo_view, name="prestamo"),
     path("prestamos_complete", prestamo_view.prestamos_complete, name="prestamos_complete"),
     path("accounts/tarjetas/", tarjetas_view.tarjetas, name="tarjeta"),
+    path("accounts/tarjetas/", tarjetas_view.solicitar_tarjeta, name="solicitar_tarjeta"),
     path("api/", include("API.urls"), name="api")
 ]

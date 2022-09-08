@@ -146,7 +146,8 @@ header .nombre-usuario {
 
 .tarjeta .delantera {
   width: 100%;
-  background-color: #84aae8;
+  background-color: #000000;
+  background-size: cover;
 }
 .delantera .link-banco {
   text-align: left;
@@ -186,7 +187,7 @@ header .nombre-usuario {
 
 /* ---------- Tarjeta Trasera ----------*/
 .trasera {
-  background-color: #84aae8;
+  background-color: #000000;
   background-size: cover;
   position: absolute;
   top: 0;
@@ -196,7 +197,7 @@ header .nombre-usuario {
 
 .trasera .barra-magnetica {
   height: 40px;
-  background: #000;
+  background: rgb(198, 198, 198);
   width: 100%;
   position: absolute;
   top: 30px;
@@ -218,9 +219,9 @@ header .nombre-usuario {
 }
 
 .trasera .datos #ccv .ccv {
-  background: #fff;
+  background: rgb(0, 0, 0);
   height: 40px;
-  color: #000;
+  color: rgb(180, 180, 180);
   padding: 10px;
   text-align: center;
 }

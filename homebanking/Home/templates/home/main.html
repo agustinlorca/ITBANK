@@ -25,7 +25,7 @@
         <a href="{% url 'home'%}"><img src="{% static 'home/img/itbank-logoceleste.png' %}" alt="logo" width="180"></a>
         <!-- MENU -->
         <div class="menu">
-          <a href="#" class="d-block m-2 p-1"><img src="{% static 'home/icons/inicio.svg' %}"></i>Inicio</a>
+          <a href="{% url 'mains' %}" class="d-block m-2 p-1"><img src="{% static 'home/icons/inicio.svg' %}"></i>Inicio</a>
           <a href="{% url 'tarjeta' %}" class="d-block m-2 p-1" ><img src="{% static 'home/icons/tarjetas.svg' %}">Tarjetas</a>
           <a href="#" class="d-block m-2 p-1"><img src="{% static 'home/icons/transferencias.svg' %}" >Transferencias</a>
           <a href="#" class="d-block m-2 p-1"><img src="{% static 'home/icons/inversiones.svg' %}">Ahorro e Inversiones</a>

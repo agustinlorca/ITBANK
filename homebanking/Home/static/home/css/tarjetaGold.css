@@ -146,7 +146,8 @@ header .nombre-usuario {
 
 .tarjeta .delantera {
   width: 100%;
-  background-color: #84aae8;
+  background-color: #a79700;
+  background-size: cover;
 }
 .delantera .link-banco {
   text-align: left;
@@ -186,7 +187,7 @@ header .nombre-usuario {
 
 /* ---------- Tarjeta Trasera ----------*/
 .trasera {
-  background-color: #84aae8;
+  background-color: #a79700;
   background-size: cover;
   position: absolute;
   top: 0;
