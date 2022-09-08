@@ -45,11 +45,8 @@ INSTALLED_APPS = [
     "Prestamos",
     "registration",
     "Tarjetas",
-    "crispy_forms",
     'widget_tweaks',
     "rest_framework",
-    "django_filters",
-    
 ]
 
 MIDDLEWARE = [
