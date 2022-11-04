@@ -1,82 +1,95 @@
-{% load static %} 
-<!DOCTYPE html>
+{% load static %}
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'home/css/login.css' %}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <title>login</title>
+    <script
+      src="https://kit.fontawesome.com/229bd6718e.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="{% static 'home/css/login.css' %}" />
+    <title>ITBANK | Login</title>
   </head>
   <body>
-    <div class="container ">
-      <div class="row">
-      <div class="col-12 d-flex align-items-end" style="height: 120px" >
-  
-        <a href="{% url 'home'%}"><img src="{% static 'home/img/itbank-logoceleste.png' %}" alt="Logo_Itbank"
-        /></a>
-  
-  
-      </div>
-      <div class="col-12 col-md-6 d-flex align-items-center justify-content-center" style="height: 500px">
+    <div class="container-fluid text-center mt-5 mb-5">
+      <a href="{% url 'home'%}"
+        ><img
+          src="{% static 'home/img/itbank-logoceleste.png' %}"
+          alt="Logo_Itbank"
+          class="logo align-self-center"
+      /></a>
+    </div>
     <style>
       .errorlist {
         color: red;
       }
     </style>
-    <div class="container">
-      <div class="row mt-3">
-        <div class="col-md-9 mx-auto mb-5">
-          <form action="" method="post">
-            {% csrf_token %}
-            <h3 class="mb-4">Iniciar sesión</h3>
-            {% if form.non_field_errors %}
-            <p style="color: red">
-              Usuario o contraseña incorrectos, prueba de nuevo.
-            </p>
-            {% endif %}
-            <p>
-              <input
-                type="text"
-                name="username"
-                autofocus
-                maxlength="254"
-                required
-                id="id_username"
-                class="form-control"
-                placeholder="Usuario"
-              />
-            </p>
-            <p>
-              <input
-                type="password"
-                name="password"
-                required
-                id="id_password"
-                class="form-control"
-                placeholder="Contraseña"
-              />
-            </p>
-            <p>
-              <input
-                type="submit"
-                class="btn btn-primary btn-block"
-                value="Iniciar sesión"
-              />
-            </p>
-          </form>
-  
-          <!--Opción de olvido de contraseña--> 
-           <p>
-             <a href="{% url 'password_reset' %}">¿No recordás tu clave?</a>
-           </p>
-            <a type="button"
-            class="btn btn-secondary btn-block" href="{% url 'register'%}">Crear una nueva cuenta</a>
+    <div class="container" style="max-width: 400px">
+      <form action="" method="post">
+        {% csrf_token %} {% if form.non_field_errors %}
+        <p style="color: red">
+          Usuario o contraseña incorrectos, prueba de nuevo.
+        </p>
+        {% endif %}
+        <input
+          type="text"
+          name="username"
+          autofocus
+          maxlength="254"
+          required
+          id="id_username"
+          class="form-control mt-2 mb-2"
+          placeholder="Usuario"
+        />
+        <input
+          type="password"
+          name="password"
+          required
+          id="id_password"
+          class="form-control mt-2 mb-2"
+          placeholder="Contraseña"
+        />
+        <div class="loginDiv">
+          <input
+            type="submit"
+            class="loginBtn btn btn-primary btn-block"
+            value="Iniciar sesión"
+          />
         </div>
+      </form>
+
+      <!--Opción de olvido de contraseña-->
+      <div class="loginDiv">
+        <a
+          type="button"
+          class="loginBtn btn btn-secondary btn-block"
+          href="{% url 'register'%}"
+          >Crear una nueva cuenta</a
+        >
       </div>
+      <p>
+        <a href="{% url 'password_reset' %}">¿No recordás tu clave?</a>
+      </p>
     </div>
-    <div class="col-5 col-md-1" style="height:200 px;">
-      <img src="{% static 'home/img/Transferencia.png' %}" alt="" />
-    </div>
+
+    <footer>
+      <div>
+        <p>
+          <b>Sentite seguro con ITBANK.</b>
+          Nunca compartas tus datos personales, <br />
+          claves y números de tarjetas con nadie.
+          <a href="">Te compartimos algunos consejos aquí</a>
+        </p>
+      </div>
+    </footer>
   </body>
 </html>

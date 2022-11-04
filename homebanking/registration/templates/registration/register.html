@@ -18,41 +18,54 @@
     />
   </head>
   <body>
-    <div class="container h-100">
-      <div class="d-flex justify-content-center h-100">
-        <div class="user_card">
-          <div class="d-flex justify-content-center">
-            <h3 id="form-title">Registrarse</h3>
-          </div>
-          <div class="d-flex justify-content-center form_container">
-            <form method="POST" action="">
-              {% csrf_token %}
-              <div class="input-group mb-3">{{register_form.username}}</div>
-              <div class="input-group mb-2">{{register_form.first_name}}</div>
-              <div class="input-group mb-2">{{register_form.last_name}}</div>
-              <div class="input-group mb-2">{{register_form.email}}</div>
-              <div class="input-group mb-2">{{register_form.password1}}</div>
-              <div class="input-group mb-2">{{register_form.password2}}</div>
+    <div class="container-fluid text-center mt-5 mb-5">
+      <a href="{% url 'home'%}"
+        ><img
+          src="{% static 'home/img/itbank-logoceleste.png' %}"
+          alt="Logo_Itbank"
+          class="logo align-self-center"
+          style="width: auto; height: 200px"
+      /></a>
+    </div>
 
-              <div class="d-flex justify-content-center mt-3 login_container">
-                <input
-                  class="btn btn-success"
-                  type="submit"
-                  value="Registrarse ahora"
-                />
-              </div>
-            </form>
-          </div>
+    <div class="container" style="max-width: 400px">
+      <form method="POST" action="">
+        {% csrf_token %}
+        <div class="input-group mb-2">{{register_form.username}}</div>
+        <div class="input-group mb-2">{{register_form.first_name}}</div>
+        <div class="input-group mb-2">{{register_form.last_name}}</div>
+        <div class="input-group mb-2">{{register_form.email}}</div>
+        <div class="input-group mb-2">{{register_form.password1}}</div>
+        <div class="input-group mb-2">{{register_form.password2}}</div>
 
-          <div class="mt-4">
-            <div class="d-flex justify-content-center links">
-              ¿Ya sos cliente de Itbank?
-              <a href="{% url 'login' %}" class="ml-2"> Ingresá ahora</a>
-            </div>
-          </div>
+        <div class="loginDiv">
+          <input
+            class="loginBtn btn btn-success"
+            type="submit"
+            value="Registrarse ahora"
+          />
         </div>
+      </form>
+    </div>
+
+    <div class="mt-4">
+      <div class="d-flex justify-content-center links">
+        ¿Ya sos cliente de ITBANK?
+        <a href="{% url 'login' %}" class="ml-2">Ingresá ahora</a>
       </div>
     </div>
+
+    <footer>
+      <div>
+        <p>
+          <b>Sentite seguro con ITBANK.</b>
+          Nunca compartas tus datos personales, <br />
+          claves y números de tarjetas con nadie.
+          <a href="">Te compartimos algunos consejos aquí</a>
+        </p>
+      </div>
+    </footer>
+
     <script>
       let form_fields = document.getElementsByTagName("input");
       form_fields[1].placeholder = "Usuario";

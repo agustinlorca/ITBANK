@@ -19,6 +19,7 @@ from Home import views as home_views
 from registration import views
 from Prestamos import views as prestamo_view
 from Tarjetas import views as tarjetas_view
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", home_views.home, name="home"),
